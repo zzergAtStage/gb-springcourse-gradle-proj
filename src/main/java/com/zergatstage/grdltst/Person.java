@@ -10,7 +10,7 @@ import java.util.UUID;
 public class Person implements Serializable {
     private String name;
     private final UUID id;
-    private transient int salary;
+    private final transient int salary;
     private static final Random random = new Random();
 
     /**
