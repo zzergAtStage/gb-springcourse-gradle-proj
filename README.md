@@ -1,5 +1,5 @@
 # GB Java Фреймворк Spring (семинары)
-## Урок 1 Урок 1. Системы сборки Maven и Gradle для разработки Java приложений
+## Урок 1. Системы сборки Maven и Gradle для разработки Java приложений
 
 > Домашнее задание
 Условие:
@@ -12,6 +12,7 @@
 >>1. Используйте библиотеку gson для сериализации и десериализации объектов класса Person в формат JSON.  
 
 **Solution:** 
+Test report: [with coverage](htmlReport/index.html)
 Created a gradle project:
 ```bash  
 C:.
