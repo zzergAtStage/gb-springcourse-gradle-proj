@@ -1,7 +1,10 @@
 package com.zergatstage.grdltst;
 
+import lombok.Getter;
+
 import java.util.UUID;
 
+@Getter
 public class Person {
     private String name;
     private final UUID id;
@@ -20,13 +23,6 @@ public class Person {
     public Person(String  name) {
         this.name =name;
         this.id = UUID.randomUUID();
-    }
-    public UUID getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     @Override
