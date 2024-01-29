@@ -13,11 +13,16 @@ repositories {
 dependencies {
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
-    implementation ("com.google.guava:guava:30.1-jre")
+// https://mvnrepository.com/artifact/com.google.code.gson/gson
+    implementation("com.google.code.gson:gson:2.8.9")
+
+
 }
 
 tasks.test {
     useJUnitPlatform()
+    include("com.zergatstage.grdltst.AppTest")
+    include("com.zergatstage.grdltst.PersonTest")
 }
 
 tasks.named<Jar>("jar") {

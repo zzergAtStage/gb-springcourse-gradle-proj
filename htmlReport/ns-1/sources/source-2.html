@@ -1,0 +1,164 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > Controller</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.zergatstage.grdltst</a>
+</div>
+
+<h1>Coverage Summary for Class: Controller (com.zergatstage.grdltst)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Controller</td>
+<td class="coverageStat">
+  <span class="percent">
+    83.3%
+  </span>
+  <span class="absValue">
+    (5/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    87.5%
+  </span>
+  <span class="absValue">
+    (7/8)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Controller$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    85.7%
+  </span>
+  <span class="absValue">
+    (6/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    88.9%
+  </span>
+  <span class="absValue">
+    (8/9)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.zergatstage.grdltst;
+&nbsp;
+&nbsp;import com.google.gson.Gson;
+&nbsp;import com.google.gson.reflect.TypeToken;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+<b class="fc">&nbsp;public class Controller&lt;T&gt; {</b>
+&nbsp;    private static Gson gson;
+<b class="fc">&nbsp;    private final TypeToken&lt;List&lt;T&gt;&gt; listType = new TypeToken&lt;&gt;() {</b>
+&nbsp;    };
+&nbsp;
+&nbsp;    public static &lt;T&gt; Controller&lt;T&gt; create(){
+<b class="fc">&nbsp;        gson = new Gson();</b>
+<b class="fc">&nbsp;        return new Controller&lt;&gt;();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String transformObjectsToJson(T object){
+<b class="fc">&nbsp;        return gson.toJson(object);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public T transformJsonToPerson(String json, Class&lt;T&gt; type){
+<b class="fc">&nbsp;        return gson.fromJson(json, type);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String transformListToJson(List&lt;T&gt; objectList){
+<b class="fc">&nbsp;        return gson.toJson(objectList, listType.getType());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;T&gt; transformJsonToList(String json){
+<b class="nc">&nbsp;        return gson.fromJson(json, listType.getType());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-29 16:11</div>
+</div>
+</body>
+</html>

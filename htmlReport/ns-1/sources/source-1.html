@@ -1,0 +1,147 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > App</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.zergatstage.grdltst</a>
+</div>
+
+<h1>Coverage Summary for Class: App (com.zergatstage.grdltst)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">App</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (3/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    82.6%
+  </span>
+  <span class="absValue">
+    (19/23)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.zergatstage.grdltst;
+&nbsp;
+&nbsp;import java.lang.reflect.Field;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;
+<b class="nc">&nbsp;public class App {</b>
+&nbsp;
+&nbsp;    public static void main(String[] args) {
+<b class="fc">&nbsp;        List&lt;Person&gt; employees = getPeople(); //to build tests</b>
+<b class="fc">&nbsp;        employees.forEach(person -&gt; System.out.println(person.toString()));</b>
+&nbsp;        //serialization to the object
+<b class="fc">&nbsp;        Controller&lt;Person&gt; personJsonController = Controller.create();</b>
+<b class="fc">&nbsp;        String personJson = personJsonController.transformObjectsToJson(employees.get(0));</b>
+<b class="fc">&nbsp;        System.out.println(&quot;\nSerialized object: &quot; + personJson);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Deserialized object: &quot; + personJsonController.transformJsonToPerson(personJson, Person.class));</b>
+&nbsp;
+<b class="fc">&nbsp;        String employeesJson = personJsonController.transformListToJson(employees);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;\nSerialized list: &quot; + employeesJson );</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private static List&lt;Person&gt; getPeople() {
+<b class="fc">&nbsp;        List&lt;Person&gt; employees = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;        employees.add(new Person(&quot;Jackson&quot;));</b>
+<b class="fc">&nbsp;        employees.add(new Person(&quot;Josh&quot;));</b>
+&nbsp;        //add a Person with empty name to add it using Reflection
+<b class="fc">&nbsp;        employees.add(new Person());</b>
+&nbsp;
+&nbsp;        //loop over list to fill empty names
+<b class="fc">&nbsp;        employees.stream().filter((e) -&gt; (e.getName() == null || e.getName().isEmpty())).forEach(e -&gt; {</b>
+&nbsp;            try {
+<b class="fc">&nbsp;                Field nameField = e.getClass()</b>
+<b class="fc">&nbsp;                        .getDeclaredField(&quot;name&quot;);</b>
+<b class="fc">&nbsp;                nameField.setAccessible(true);</b>
+<b class="fc">&nbsp;                nameField.set(e, &quot;Empty&quot;);</b>
+<b class="nc">&nbsp;            } catch (NoSuchFieldException | IllegalAccessException ex){</b>
+<b class="nc">&nbsp;                ex.printStackTrace();</b>
+<b class="nc">&nbsp;                throw new RuntimeException(&quot;Bad user! Bad user! Bad user!...\n&quot; );</b>
+<b class="fc">&nbsp;            }</b>
+&nbsp;        });
+<b class="fc">&nbsp;        return employees;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-29 16:11</div>
+</div>
+</body>
+</html>

@@ -7,6 +7,19 @@ import java.util.List;
 public class App {
 
     public static void main(String[] args) {
+        List<Person> employees = getPeople(); //to build tests
+        employees.forEach(person -> System.out.println(person.toString()));
+        //serialization to the object
+        Controller<Person> personJsonController = Controller.create();
+        String personJson = personJsonController.transformObjectsToJson(employees.get(0));
+        System.out.println("\nSerialized object: " + personJson);
+        System.out.println("Deserialized object: " + personJsonController.transformJsonToPerson(personJson, Person.class));
+
+        String employeesJson = personJsonController.transformListToJson(employees);
+        System.out.println("\nSerialized list: " + employeesJson );
+    }
+
+    private static List<Person> getPeople() {
         List<Person> employees = new ArrayList<>();
         employees.add(new Person("Jackson"));
         employees.add(new Person("Josh"));
@@ -25,9 +38,6 @@ public class App {
                 throw new RuntimeException("Bad user! Bad user! Bad user!...\n" );
             }
         });
-        employees.forEach(person -> System.out.println(person.toString()));
-        //serialization to the object
-
-
+        return employees;
     }
 }
